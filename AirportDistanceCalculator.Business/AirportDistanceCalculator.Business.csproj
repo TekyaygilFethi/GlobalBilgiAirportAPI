@@ -1,0 +1,27 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Http" Version="2.2.2" />
+    <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0" />
+    <PackageReference Include="StackExchange.Redis" Version="2.6.122" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\AirportDistanceCalculator.Database\AirportDistanceCalculator.Database.csproj" />
+    <ProjectReference Include="..\AirportDistanceCalculator.Data\AirportDistanceCalculator.Data.csproj" />
+    <ProjectReference Include="..\GenericDatabaseAccess\GenericDatabaseAccess.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="GlobalBilgiQuiz.Helper">
+      <HintPath>..\..\GlobalBilgiQuiz\GlobalBilgiQuiz.Helper\bin\Debug\net7.0\GlobalBilgiQuiz.Helper.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>

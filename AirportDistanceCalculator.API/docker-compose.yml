@@ -1,0 +1,52 @@
+version: '3'
+
+services:
+  redis:
+    image: redis:latest
+    container_name: redis
+    ports:
+      - 6379:6379
+    networks:
+      - globalbilginetwork
+    volumes:
+      - redisdata:/data
+
+  redis-insight:
+    image: redislabs/redisinsight:latest
+    container_name: redis-insight
+    ports:
+      - 7000:8001
+    networks:
+      - globalbilginetwork
+
+  elasticsearch:
+    image: elasticsearch:7.17.13
+    container_name: elasticsearch
+    environment:
+      - discovery.type=single-node
+    ports:
+      - 9200:9200
+    networks:
+      - globalbilginetwork
+    volumes:
+      - elasticsearchdata:/data
+  
+  kibana:
+    image: kibana:7.17.13
+    container_name: kibana
+    environment:
+      - ELASTICSEARCH_HOSTS=http://elasticsearch:9200
+    ports:
+      - 5601:5601
+    depends_on:
+      - elasticsearch
+    networks:
+      - globalbilginetwork
+
+networks:
+  globalbilginetwork:
+      driver: bridge
+    
+volumes: 
+  redisdata:
+  elasticsearchdata:
